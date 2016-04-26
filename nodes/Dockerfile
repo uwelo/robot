@@ -1,1 +1,0 @@
-FROM uweloydl/robot-base:
