@@ -33,5 +33,4 @@ RUN chown -R seluser /opt/robot
 #==============================
 COPY run-tests.py /opt/bin/run-tests.py
 
-
 USER seluser
