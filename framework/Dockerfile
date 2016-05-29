@@ -31,6 +31,8 @@ RUN chown -R seluser /opt/robot
 #==============================
 # runners
 #==============================
-COPY run-tests.py /opt/bin/run-tests.py
+COPY run-tests.py /opt/robot/bin/run-tests.py
 
 USER seluser
+
+ENTRYPOINT /opt/robot/bin/run-tests.py

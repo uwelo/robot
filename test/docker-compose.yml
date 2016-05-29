@@ -1,0 +1,16 @@
+hub:
+  image: uweloydl/robot-hub
+  ports:
+    - "4444:4444"
+firefox:
+  image: uweloydl/robot-firefox
+  links:
+    - hub
+chrome:
+  image: uweloydl/robot-chrome
+  links:
+    - hub
+robot:
+  image: uweloydl/robot-framework
+  links:
+    - hub    
