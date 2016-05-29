@@ -84,7 +84,7 @@ def parseArgs():
         help="""
             Use a remote URL to connect to a running selenium server.
             PLEASE NOTE: use only one --start-selenium OR --remote-url
-            Example: %(prog)s -r TODO
+            Example: %(prog)s -r http://grid:4444/wd/hub
             """)
 
     parser.add_argument("-p", "--proxy",
@@ -114,7 +114,7 @@ def parseArgs():
         help="""
             File to parse additional arguments from (e.g. as provided by RIDE).
             Will be passed to pybot.""")
-            
+
     (args, unknown) = parser.parse_known_args()  # ignore unknown args (e.g. those passed by RIDE)
 
     if args.verbose: VERBOSE = True

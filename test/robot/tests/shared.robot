@@ -9,6 +9,7 @@ Library                     Selenium2Library
 Library                     DateTime
 Library                     Collections
 Library                     RequestsLibrary
+Library                     HttpLibrary.HTTP
 
 *** Variables ***
 ${SERVER}                   SHOULD BE DEFINED PER COMMAND LINE PARAMETER

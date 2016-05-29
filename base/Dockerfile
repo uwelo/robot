@@ -57,6 +57,13 @@ RUN mkdir -p /opt/selenium \
     https://selenium-release.storage.googleapis.com/${SELENIUM_SERVER_VERSION}/selenium-server-standalone-${SELENIUM_SERVER_VERSION}.0.jar \
     -O /opt/selenium/selenium-server-standalone.jar
 
+#==================================================================
+# Dockerize, helper for waiting for dependencies for docker compose
+#==================================================================
+ENV DOCKERIZE_VERSION v0.2.0
+RUN wget https://github.com/jwilder/dockerize/releases/download/$DOCKERIZE_VERSION/dockerize-linux-amd64-$DOCKERIZE_VERSION.tar.gz \
+    && tar -C /usr/local/bin -xzvf dockerize-linux-amd64-$DOCKERIZE_VERSION.tar.gz
+
 #========================================
 # Add normal user with passwordless sudo
 #========================================
