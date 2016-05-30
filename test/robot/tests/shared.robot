@@ -12,19 +12,27 @@ Library                     RequestsLibrary
 Library                     HttpLibrary.HTTP
 
 *** Variables ***
-${SERVER}                   SHOULD BE DEFINED PER COMMAND LINE PARAMETER
-${BROWSER}                  SHOULD BE DEFINED PER COMMAND LINE PARAMETER
-${REMOTE_URL}               SHOULD BE DEFINED PER COMMAND LINE PARAMETER
-${PROXY}                    SHOULD BE DEFINED PER COMMAND LINE PARAMETER
+# This variables should be set by arguments to run-tests.py
+${SERVER}
+${BROWSER}
+${REMOTE_URL}
+${PROXY}
+
 &{PROXIES}                  http=${PROXY}
 ${DELAY}                    0
+
+${PROXYCAPABILITIES}
+${CAPABILITIES}
 
 *** Keywords ***
 Open Browser With Proxy
     [Arguments]  ${URL}
 
-    ${capabilities}=        Evaluate    {'proxy':{'proxyType':'manual', 'httpProxy':'${PROXY}', 'sslProxy':'${PROXY}'}, 'platform':'${PLATFORM}', 'version':'${BROWSER_VERSION}'}
-                            Run Keyword If        '${PROXY}' == ''     Open Browser         ${URL}      ${BROWSER}
-                            Run Keyword Unless    '${PROXY}' == ''     Open Browser         ${URL}      ${BROWSER}    None    ${REMOTE_URL}    ${capabilities}
-                            Set Selenium Implicit Wait  5seconds
-                            Set Window Size  ${1280}  ${1024}
+    ${CAPABILITIES}=  Evaluate  {'platform':'${PLATFORM}', 'version':'${BROWSER_VERSION}'}
+
+    Run Keyword Unless  '${PROXY}' == ''  ${PROXYCAPABILITIES}=  Evaluate  {'proxyType':'manual', 'httpProxy':'${PROXY}', 'sslProxy':'${PROXY}'}
+    Run Keyword Unless  '${PROXYCAPABILITIES}' == ''  Set To Dictionary  ${CAPABILITIES}  proxy  ${PROXYCAPABILITIES}
+
+    Open Browser  ${URL}  ${BROWSER}  None  ${REMOTE_URL}  ${CAPABILITIES}
+    Set Selenium Implicit Wait  5seconds
+    Set Window Size  ${1280}  ${1024}

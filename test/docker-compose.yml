@@ -10,10 +10,11 @@ chrome:
   image: uweloydl/robot-chrome
   links:
     - hub
-#robot:
-#  image: uweloydl/robot-framework
-#  links:
-#    - hub
-#  volumes:
-#    - ./robot:/opt/robot
-#  command: "--no-proxy -r http://172.17.0.1:4444/wd/hub -b ff -t tests"
+robot:
+  image: uweloydl/robot-framework
+  links:
+    - hub
+    - firefox
+    - chrome
+  volumes:
+    - ./robot:/opt/robot

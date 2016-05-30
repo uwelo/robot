@@ -36,7 +36,7 @@ ENV DISPLAY :99.0
 
 USER seluser
 
-CMD ["/opt/bin/entry.sh"]
+CMD dockerize -timeout 60s -wait http://hub:4444/grid/console/ /opt/bin/entry.sh
 USER root
 
 #=========

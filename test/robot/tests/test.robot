@@ -5,8 +5,8 @@ Test Teardown  			        Close Browser
 
 *** Keywords ***
 open page
-	Open Browser With Proxy                  	http://www.mobile.de
-	Title Should Be    mobile.de – Gebrauchtwagen und Neuwagen – Deutschlands größter Fahrzeugmarkt
+	Open Browser With Proxy                  	http://www.google.de
+	Title Should Be    Google
 
 *** Test Cases ***
 Test

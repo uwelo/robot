@@ -33,6 +33,8 @@ fi
 
 SERVERNUM=$(get_server_num)
 echo "XVFB-SERVERNUM: ${SERVERNUM}"
+echo "HUB_PORT_4444_TCP_ADDR: ${HUB_PORT_4444_TCP_ADDR}"
+echo "HUB_PORT_4444_TCP_PORT: ${HUB_PORT_4444_TCP_PORT}"
 xvfb-run -n $SERVERNUM --server-args="-screen 0 $GEOMETRY -ac +extension RANDR" \
   java ${JAVA_OPTS} -jar /opt/selenium/selenium-server-standalone.jar \
     -role node \

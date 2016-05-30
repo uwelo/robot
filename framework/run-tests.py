@@ -10,7 +10,7 @@ import urllib
 import sys
 import atexit
 
-basedir = os.path.realpath(os.path.dirname(__file__) + "/..")
+basedir = "/opt/robot/"
 outdir = basedir + "/output"
 profiledir = basedir + "/profiles"
 selenium_log_file = None
