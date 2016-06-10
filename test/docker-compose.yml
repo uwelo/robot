@@ -12,6 +12,7 @@ chrome:
     - hub
 robot:
   image: uweloydl/robot-framework
+  entrypoint: /bin/bash
   links:
     - hub
     - firefox
